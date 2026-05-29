@@ -170,7 +170,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--url",
         nargs="+",
-        default=["http://localhost:8080/mcp/sse"],
+        required=True,
         help="One or more SSE endpoint URLs."
     )
     args = parser.parse_args()
