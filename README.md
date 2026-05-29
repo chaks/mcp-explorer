@@ -43,8 +43,7 @@ SSE Handshake  Tools List   JSON/Text
 This streamlined workflow ensures:
 
 *   **No guesswork**: Full protocol-compliant handshake with any MCP server
-*   **Zero configuration**: Works out of the box with sensible defaults
-*   **Structured output**: JSON output pipeable into `jq` for automation
+*   **Flexible output**: JSON output pipeable into `jq` for automation
 *   **Human-readable**: Clean terminal rendering for quick inspection
 
 ### 🔧 Core Components
@@ -87,7 +86,7 @@ Query multiple MCP servers in a single invocation — tools from all servers are
 [](#quick-list-default)
 
 ```bash
-$ uv run list_mcp_tools.py
+$ uv run list_mcp_tools.py --url http://localhost:8080/mcp/sse
 ```
 
 ```json
@@ -99,8 +98,8 @@ $ uv run list_mcp_tools.py
 [](#detailed-schemas-with-jq)
 
 ```bash
-$ uv run list_mcp_tools.py --detailed | jq '.[].name'
-$ uv run list_mcp_tools.py --detailed | jq '.[] | select(.name | startswith("search_"))'
+$ uv run list_mcp_tools.py --url http://localhost:8080/mcp/sse --detailed | jq '.[].name'
+$ uv run list_mcp_tools.py --url http://localhost:8080/mcp/sse --detailed | jq '.[] | select(.name | startswith("search_"))'
 ```
 
 ### Human-readable rendering
@@ -108,7 +107,7 @@ $ uv run list_mcp_tools.py --detailed | jq '.[] | select(.name | startswith("sea
 [](#human-readable-rendering)
 
 ```bash
-$ uv run list_mcp_tools.py --render
+$ uv run list_mcp_tools.py --url http://localhost:8080/mcp/sse --render
 ```
 
 Clean, formatted terminal output with proper descriptions and parameter details.
@@ -122,14 +121,6 @@ Clean, formatted terminal output with proper descriptions and parameter details.
 | `--url URL [URL ...]` | **Required.** One or more SSE endpoint URLs |
 | `-d, --detailed` | Output full tool descriptions and input schemas as pretty-printed JSON |
 | `-r, --render` | Output human-readable formatted text with rendered newlines |
-
-### Custom endpoint
-
-[](#custom-endpoint)
-
-```bash
-uv run list_mcp_tools.py --url http://my-server:3000/mcp/sse
-```
 
 ### Multiple servers
 
@@ -207,4 +198,4 @@ Apache License 2.0 — See [LICENSE](LICENSE) for details.
 * * *
 
 ✨ **Ready to discover any MCP server's capabilities in seconds?** ✨  
-🚀 **Just run `uv run list_mcp_tools.py` and start integrating today!**
+🚀 **Just run `uv run list_mcp_tools.py --url http://localhost:8080/mcp/sse` and start integrating today!**
