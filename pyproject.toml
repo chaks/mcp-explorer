@@ -1,0 +1,8 @@
+[project]
+name = "mcp-explorer"
+version = "0.1.0"
+description = "CLI tool for discovering and inspecting tools exposed by a Model Context Protocol (MCP) SSE server"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.25.0",
+]
